@@ -1,5 +1,6 @@
 // import "./App.css";
 import "./categories.style.scss";
+import CategoryItem from "./components/cotegory-item/category-item.compnanet";
 
 function App() {
   const cotegories = [
@@ -37,19 +38,12 @@ function App() {
 
   return (
     <div className="categories-container">
-      {cotegories.map(({ title, id, imageUrl }) => (
-        <div key={id} className="category-container">
-          <div
-            className="background-image"
-            style={{
-              backgroundImage: `url(${imageUrl})`,
-            }}
-          />
-          <div className="category-body-container">
-            <h2>{title}</h2>
-            <p>Shop Now</p>
-          </div>
-        </div>
+      {cotegories.map((category) => (
+        <CategoryItem
+          key={category.id}
+          category={category}
+          imageUrl={category.imageUrl}
+        />
       ))}
     </div>
   );
