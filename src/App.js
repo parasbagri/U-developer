@@ -1,6 +1,6 @@
 // import "./App.css";
-import "./categories.style.scss";
-import CategoryItem from "./components/cotegory-item/category-item.compnanet";
+// import "./categories.style.scss";
+import Directory from "./components/directory/directory.component.jsx";
 
 function App() {
   const cotegories = [
@@ -37,7 +37,8 @@ function App() {
   ];
 
   return (
-    <div className="categories-container">
+    <div>
+      {/* <div className="categories-container">
       {cotegories.map((category) => (
         <CategoryItem
           key={category.id}
@@ -45,6 +46,9 @@ function App() {
           imageUrl={category.imageUrl}
         />
       ))}
+    </div> */}
+
+      <Directory cotegories={cotegories} />
     </div>
   );
 }
