@@ -10,6 +10,7 @@ const Directory = ({cotegories}) => {
           key={category.id}
           category={category}
           imageUrl={category.imageUrl}
+          title={category.title}
         />
       ))}
     </div>
