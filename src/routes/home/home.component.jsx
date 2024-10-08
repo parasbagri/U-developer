@@ -2,6 +2,7 @@
 // import "./categories.style.scss";
 // import Directory from "./components/directory/directory.component.jsx";
 import Directory from "../../components/directory/directory.component.jsx";
+import { Outlet } from "react-router-dom";
 
 function Home() {
   const cotegories = [
@@ -48,8 +49,9 @@ function Home() {
         />
       ))}
     </div> */}
-
+       
       <Directory cotegories={cotegories} />
+      <Outlet/>  
     </div>
   );
 }
