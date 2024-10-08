@@ -3,9 +3,8 @@ import './shop.style.scss'
 const Shop = () =>{
     return(
         <div className="shop-container">
-            <h1>Welcome to our Shop</h1>
+            <h3>Welcome to our Shop</h3>
             <p>Discover our products</p>
-             
         </div>
     )
 }
