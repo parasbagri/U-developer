@@ -10,19 +10,19 @@ function Home() {
       id: 1,
       title: "Hates",
       imageUrl:
-        "https://images.pexels.com/photos/28359348/pexels-photo-28359348/free-photo-of-a-woman-in-a-black-dress-stands-in-a-field.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/954254/pexels-photo-954254.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
     {
       id: 2,
       title: "Jakets",
       imageUrl:
-        "https://images.pexels.com/photos/28359348/pexels-photo-28359348/free-photo-of-a-woman-in-a-black-dress-stands-in-a-field.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://media.istockphoto.com/id/1069165932/photo/black-leather-jacket-shot-from-front-and-back-isolated-on-white.jpg?s=1024x1024&w=is&k=20&c=Lrzzgm7wY4t8fwxH_TON64VrBoCab82Wmw39g2U0eDg=",
     },
     {
       id: 3,
       title: "Sneakers",
       imageUrl:
-        "https://images.pexels.com/photos/28359348/pexels-photo-28359348/free-photo-of-a-woman-in-a-black-dress-stands-in-a-field.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ function Home() {
       id: 5,
       title: "Mens",
       imageUrl:
-        "https://images.pexels.com/photos/28359348/pexels-photo-28359348/free-photo-of-a-woman-in-a-black-dress-stands-in-a-field.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/13201882/pexels-photo-13201882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
   ];
 

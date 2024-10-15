@@ -1,15 +1,17 @@
  
-import{ signInWithGooglePopup} from '../../utils/firebase/firebase';
+import{ signInWithGooglePopup} from '../../utils/firebase/firebase.utils';
+import { createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
 
 const SignIn = () => {
   const logGoogleUser = async () => { // remeber: when you ever to make call something from DB you need to make asynchronous function call
-    const response = await  signInWithGooglePopup();
-    console.log('Google Sign-in successful', response); // debugging info
+    const {user} = await  signInWithGooglePopup();
+    // console.log('Google Sign-in successful', response); // debugging info
         // 'response' ke andar 'user' object hota hai
-        const user = response.user;
-    user.getIdToken().then((token) => {
-      console.log("User Auth Token provided by google Compny 😂: ", token);
-    });
+        createUserDocumentFromAuth(user)
+    //     const user = response.user;
+    // user.getIdToken().then((token) => {
+    //   console.log("User Auth Token provided by google Compny 😂: ", token);
+    // });
   } 
   // const UserPhoto = logGoogleUser.UserCredentialImpl.user
   // const User =  user.getIdToken().then((token) => {

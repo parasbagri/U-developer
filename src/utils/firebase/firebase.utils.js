@@ -1,11 +1,12 @@
 import { initializeApp } from "firebase/app"; // humne jo app banaya hai firebase me usko import kar rhe hai as connection bana rhe hai
-
 import {
   getAuth,
   signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
+
+import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore"; // imported now create intenace and make DB
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -28,3 +29,13 @@ provider.setCustomParameters({
 
 export const auth = getAuth(firebaseApp);
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+
+export const db = getFirestore();
+
+export const createUserDocumentFromAuth = async (userAuth) => {
+  // strore here firebase store
+  const userDocRef = doc(db, `users`, userAuth.uid); // checking doc alredy exist
+  console.log(userDocRef);
+  const userSnapshot = await getDoc(userDocRef); // it is also dta and spacial object
+  console.log(userSnapshot);
+};
