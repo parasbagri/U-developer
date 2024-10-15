@@ -38,4 +38,24 @@ export const createUserDocumentFromAuth = async (userAuth) => {
   console.log(userDocRef);
   const userSnapshot = await getDoc(userDocRef); // it is also dta and spacial object
   console.log(userSnapshot);
+  console.log(userSnapshot.exists());
+
+  // user snapshot if the user data not exist yet
+  if (!userSnapshot.exists()) {
+    // create user data
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await setDoc(userDocRef, {
+        displayName,
+        email,
+        createdAt,
+      });
+    } catch (error) {
+      console.log(`User creating the eeror: ${error.message}`);
+    }
+    // if user data exists
+    return userDocRef;
+  }
 };

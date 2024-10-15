@@ -7,7 +7,7 @@ const SignIn = () => {
     const {user} = await  signInWithGooglePopup();
     // console.log('Google Sign-in successful', response); // debugging info
         // 'response' ke andar 'user' object hota hai
-        createUserDocumentFromAuth(user)
+    const userDocRef = await createUserDocumentFromAuth(user)
     //     const user = response.user;
     // user.getIdToken().then((token) => {
     //   console.log("User Auth Token provided by google Compny 😂: ", token);
