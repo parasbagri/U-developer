@@ -4,6 +4,7 @@ import {
   signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 
 import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore"; // imported now create intenace and make DB
@@ -21,19 +22,27 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
-const provider = new GoogleAuthProvider();
+const googleprovider = new GoogleAuthProvider();
 
-provider.setCustomParameters({
+googleprovider.setCustomParameters({
   prompt: "select_account",
 });
 
 export const auth = getAuth(firebaseApp);
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGooglePopup = () =>
+  signInWithPopup(auth, googleprovider);
+// second authentication method sign in redirect
+export const signWihGoogleRedirect = () =>
+  signInWithRedirect(auth, googleprovider);
 
 export const db = getFirestore();
 
-export const createUserDocumentFromAuth = async (userAuth) => {
+export const createUserDocumentFromAuth = async (
+  userAuth,
+  aditionalInformation = {}
+) => {
   // strore here firebase store
+  if (!userAuth) return;
   const userDocRef = doc(db, `users`, userAuth.uid); // checking doc alredy exist
   console.log(userDocRef);
   const userSnapshot = await getDoc(userDocRef); // it is also dta and spacial object
@@ -51,6 +60,7 @@ export const createUserDocumentFromAuth = async (userAuth) => {
         displayName,
         email,
         createdAt,
+        ...aditionalInformation,
       });
     } catch (error) {
       console.log(`User creating the eeror: ${error.message}`);
@@ -58,4 +68,10 @@ export const createUserDocumentFromAuth = async (userAuth) => {
     // if user data exists
     return userDocRef;
   }
+};
+
+export const createAuthUserWithEmailAndPass = async (email, password) => {
+  if (!email || !password) return; // exit
+
+  return await createUserWithEmailAndPassword(auth, email, password);
 };
