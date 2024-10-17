@@ -15,7 +15,7 @@ const Button = ({children, buttonType, ...otherProps}) => {
         <Fragment>
             <button className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`} {...otherProps} type="submit">
                 {children}
-                {/* <i className="fas fa-shopping-cart"></i> */}    
+                <i className="fas fa-shopping-cart"></i> 
             </button>
         </Fragment>
         )
