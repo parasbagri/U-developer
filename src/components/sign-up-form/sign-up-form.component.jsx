@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react"
 import { createAuthUserWithEmailAndPass, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils"
+import FormInput from '../form-input/form-input.component'
 
 const defaultFormFields = {
     displayName: '',
@@ -7,8 +8,6 @@ const defaultFormFields = {
     password: '',
     confirmPassword: ''  // similarly add other fields as required by your application
 }
-
-
 const SignUpFrom = () => { 
     
     const [formFields, setFormFields] = useState(defaultFormFields)
@@ -72,22 +71,24 @@ const SignUpFrom = () => {
          <h1> Sign Up with your Email/Password</h1>
 
          <form onSubmit={handleSubmit}>
-            <label>Name</label>
-            <input type="text" required onChange={handleChange} name='displayName' value={displayName}/>
+            {/* <label>Name</label> */}
+            <FormInput label='Name' type="text" required onChange={handleChange} name='displayName' value={displayName}/>
 
-            <label>Email</label>
-            <input type="text" required onChange={handleChange}name='email' value={email}/>
+            {/* <label>Email</label> */}
+            <FormInput label='Email' type="text" required onChange={handleChange}name='email' value={email}/>
 
-            <label>Password</label>
-            <input type="password" required onChange={handleChange} name='password' value={password}/>
+            {/* <label>Password</label> */}
+            <FormInput label='Password' type="password" required onChange={handleChange} name='password' value={password}/>
             
-            <label>Confirm Password</label>
-            <input type="password" required onChange={handleChange} name='confirmPassword' value={confirmPassword}/> 
+            {/* <label>Confirm Password</label> */}
+            <FormInput label='Confirm Password' type="password" required onChange={handleChange} name='confirmPassword' value={confirmPassword}/> 
 
             <button type="submit">Sign Up</button>
          </form>
+              <FormInput />
         </Fragment>
         // this component will render form to sign up user with email and password
+        
         )
 } 
 
