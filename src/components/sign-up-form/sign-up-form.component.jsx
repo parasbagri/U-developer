@@ -1,6 +1,8 @@
 import { Fragment, useState } from "react"
 import { createAuthUserWithEmailAndPass, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils"
 import FormInput from '../form-input/form-input.component'
+import './sign-up-form.styles.scss'  
+import Button from "../button/button.component"
 
 const defaultFormFields = {
     displayName: '',
@@ -32,7 +34,7 @@ const SignUpFrom = () => {
             await createUserDocumentFromAuth(user, {displayName}); // create user document in firestore
             resetFormField(); // reset form fields after successful signup  
             
-    }catch(e){
+        }catch(e){
         if(e.code === 'auth/email-already-in-use')
         {
             alert('Email already in use, please try a different one.');
@@ -65,11 +67,12 @@ const SignUpFrom = () => {
         const {name, value } = e.target 
         setFormFields({...formFields, [name]:value })
     }
-
       return ( 
-        <Fragment> 
-         <h1> Sign Up with your Email/Password</h1>
 
+        <div className="sign-up-container">
+        <Fragment> 
+            <h2>Do't have account just create</h2>
+         <span> Sign Up with your Email/Password</span>
          <form onSubmit={handleSubmit}>
             {/* <label>Name</label> */}
             <FormInput label='Name' type="text" required onChange={handleChange} name='displayName' value={displayName}/>
@@ -83,14 +86,13 @@ const SignUpFrom = () => {
             {/* <label>Confirm Password</label> */}
             <FormInput label='Confirm Password' type="password" required onChange={handleChange} name='confirmPassword' value={confirmPassword}/> 
 
-            <button type="submit">Sign Up</button>
+            {/* <Button buttonType='google' type="submit">Sign Up</Button> */}
+            <Button type="submit">Sign Up</Button>
          </form>
-              <FormInput />
-        </Fragment>
+              {/* <FormInput /> */}
+         </Fragment>
+        </div>
         // this component will render form to sign up user with email and password
-        
         )
 } 
-
-
 export default SignUpFrom; 
