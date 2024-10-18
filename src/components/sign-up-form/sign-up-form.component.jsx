@@ -1,8 +1,9 @@
-import { Fragment, useState } from "react"
+import { Fragment, useState , useContext} from "react"
 import { createAuthUserWithEmailAndPass, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils"
 import FormInput from '../form-input/form-input.component'
 import './sign-up-form.styles.scss'  
 import Button from "../button/button.component"
+import { UserContext } from "../../context/user.context"
 
 const defaultFormFields = {
     displayName: '',
@@ -15,10 +16,12 @@ const SignUpFrom = () => {
     const [formFields, setFormFields] = useState(defaultFormFields)
     const {displayName, email, password, confirmPassword} = formFields
     console.log(formFields)
+    // const value = useContext(UserContext)
+    const {setCurrentUser} = useContext(UserContext)
 
     const resetFormField = () =>{
         setFormFields(defaultFormFields)
-    }
+    } 
 
     const handleSubmit = async (e) => {
       e.preventDefault(); // prevent default means i don't want baydefault anything 
@@ -33,6 +36,8 @@ const SignUpFrom = () => {
             // console.log(reponse); // debugging info
             await createUserDocumentFromAuth(user, {displayName}); // create user document in firestore
             resetFormField(); // reset form fields after successful signup  
+
+            setCurrentUser(user) // update user in context after successful signup; 
             
         }catch(e){
         if(e.code === 'auth/email-already-in-use')

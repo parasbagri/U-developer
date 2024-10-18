@@ -1,12 +1,13 @@
-import { Fragment, useState } from "react"
+import { Fragment, useState, useContext } from "react"
 import {
-  signInWithGooglePopup, createUserDocumentFromAuth,
+  signInWithGooglePopup, 
+  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPass
-
- } from "../../utils/firebase/firebase.utils"
+} from "../../utils/firebase/firebase.utils"
 import FormInput from '../form-input/form-input.component'
 import './sign-in-form.styles.scss'  
 import Button from "../button/button.component"
+import { UserContext } from "../../context/user.context" 
 
 const defaultFormFields = {
     email: '',
@@ -18,6 +19,8 @@ const SignInFrom = () => {
     const [formFields, setFormFields] = useState(defaultFormFields)
     const {email, password,  } = formFields
     console.log(formFields)
+
+    const { setCurrentUser } = useContext(UserContext);
 
     const resetFormField = () =>{
         setFormFields(defaultFormFields)
@@ -38,8 +41,9 @@ const SignInFrom = () => {
     const handleSubmit = async (e) => {
       e.preventDefault(); // prevent default means i don't want baydefault anything 
     try{
-        const response = await signInAuthUserWithEmailAndPass(email, password);
-        console.log(response);
+        const  {user} = await signInAuthUserWithEmailAndPass(email, password);
+        // console.log(response);
+        setCurrentUser(user)
           resetFormField(); // reset form fields after successful signup   
         }catch(e){
           switch(e.code){
