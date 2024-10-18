@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 
 import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore"; // imported now create intenace and make DB
@@ -69,9 +70,15 @@ export const createUserDocumentFromAuth = async (
     return userDocRef;
   }
 };
-
+// interface layer jo itract karegi firebase service se
 export const createAuthUserWithEmailAndPass = async (email, password) => {
   if (!email || !password) return; // exit
 
   return await createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const signInAuthUserWithEmailAndPass = async (email, password) => {
+  if (!email || !password) return; // exit
+
+  return await signInWithEmailAndPassword(auth, email, password);
 };
