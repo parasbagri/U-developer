@@ -1,4 +1,4 @@
-import { Fragment, useState, useContext } from "react"
+import { Fragment, useState } from "react"
 import {
   signInWithGooglePopup, 
   createUserDocumentFromAuth,
@@ -7,7 +7,7 @@ import {
 import FormInput from '../form-input/form-input.component'
 import './sign-in-form.styles.scss'  
 import Button from "../button/button.component"
-import { UserContext } from "../../context/user.context" 
+// import { UserContext } from "../../context/user.context" 
 
 const defaultFormFields = {
     email: '',
@@ -20,7 +20,7 @@ const SignInFrom = () => {
     const {email, password,  } = formFields
     console.log(formFields)
 
-    const { setCurrentUser } = useContext(UserContext);
+    // const { setCurrentUser } = useContext(UserContext);
 
     const resetFormField = () =>{
         setFormFields(defaultFormFields)
@@ -28,10 +28,12 @@ const SignInFrom = () => {
 
     const signInWithGoogle = async () => {
       // remeber: when you ever to make call something from DB you need to make asynchronous function call
-      const { user } = await signInWithGooglePopup();
+      // const { user } = await signInWithGooglePopup();
+       await signInWithGooglePopup();
       // console.log('Google Sign-in successful', response); // debugging info
       // 'response' ke andar 'user' object hota hai
-     await createUserDocumentFromAuth(user);
+    //  await createUserDocumentFromAuth(user);
+    //  setCurrentUser(user)
       //     const user = response.user;
       // user.getIdToken().then((token) => {
       //   console.log("User Auth Token provided by google Compny 😂: ", token);
@@ -43,7 +45,7 @@ const SignInFrom = () => {
     try{
         const  {user} = await signInAuthUserWithEmailAndPass(email, password);
         // console.log(response);
-        setCurrentUser(user)
+        // setCurrentUser(user)
           resetFormField(); // reset form fields after successful signup   
         }catch(e){
           switch(e.code){

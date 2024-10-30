@@ -8,12 +8,12 @@ const NaveBar = () => {
   const {currentUser, setCurrentUser} = useContext(UserContext);
   // console.log(currentUser);
 
-  const signOutHangler = async () => {
-    await signOutUser()
-    // console.log(res)
-    setCurrentUser(null)
+  // const signOutHandler = async () => {
+  //   await signOutUser()
+  //   // console.log(res)
+  //   setCurrentUser(null)
 
-  }
+  // }
     return (
       <Fragment>
         <div className="navigation">
@@ -23,7 +23,7 @@ const NaveBar = () => {
             <div className="nav-links-container">
                 <Link to="/" className="nav-link">Home</Link>
                 <Link to="/Shop" className="nav-link">Shop</Link>
-                {currentUser? (<span className="nav-link" onClick={signOutHangler}>SIGN OUT</span>)
+                {currentUser? (<span className="nav-link" onClick={signOutUser}>SIGN OUT</span>)
                 :(<Link to="/auth" className="nav-link">SIGN IN</Link>)
                 }
             </div>

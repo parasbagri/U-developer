@@ -9,13 +9,14 @@ const defaultFormFields = {
     displayName: '',
     email: '',
     password: '',
-    confirmPassword: ''  // similarly add other fields as required by your application
+    confirmPassword: ''  // similarly add other fields as required by your application 
 }
 const SignUpFrom = () => { 
     
     const [formFields, setFormFields] = useState(defaultFormFields)
     const {displayName, email, password, confirmPassword} = formFields
-    console.log(formFields)
+    // console.log(formFields)
+    console.log('hit');
     // const value = useContext(UserContext)
     const {setCurrentUser} = useContext(UserContext)
 
@@ -36,8 +37,7 @@ const SignUpFrom = () => {
             // console.log(reponse); // debugging info
             await createUserDocumentFromAuth(user, {displayName}); // create user document in firestore
             resetFormField(); // reset form fields after successful signup  
-
-            setCurrentUser(user) // update user in context after successful signup; 
+             // setCurrentUser(user) // update user in context after successful signup; 
             
         }catch(e){
         if(e.code === 'auth/email-already-in-use')
@@ -77,7 +77,7 @@ const SignUpFrom = () => {
         <div className="sign-up-container">
         <Fragment> 
             <h2>Do't have account just create</h2>
-         <span> Sign Up with your Email/Password</span>
+            <span> Sign Up with your Email/Password</span>
          <form onSubmit={handleSubmit}>
             {/* <label>Name</label> */}
             <FormInput label='Name' type="text" required onChange={handleChange} name='displayName' value={displayName}/>
