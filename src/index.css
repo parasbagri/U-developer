@@ -8,6 +8,8 @@ body {
     font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 20px 40px;
+  background-color: rgb(188, 186, 186);
 }
 
 code {
