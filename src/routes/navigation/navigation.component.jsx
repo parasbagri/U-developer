@@ -5,10 +5,12 @@ import CartDropdown from '../../components/card-dropdown/card-dropdown.component
 import {ReactComponent as CrwnLogo} from '../../assets/crown.svg'
 import './navigation.style.scss'
 import { UserContext } from "../../context/user.context";
+import {CartContext} from '../../context/cart.context'
 import {signOutUser} from "../../utils/firebase/firebase.utils"
 
 const NaveBar = () => {
   const {currentUser, setCurrentUser} = useContext(UserContext);
+  const {isCartOpen} = useContext(CartContext)
   
     return (
       <Fragment>
@@ -24,7 +26,7 @@ const NaveBar = () => {
                 }
                 <CardIcon/>
             </div>   
-            <CartDropdown />                  
+              {isCartOpen && <CartDropdown />}    
         </div>
         <Outlet />
       </Fragment> 
